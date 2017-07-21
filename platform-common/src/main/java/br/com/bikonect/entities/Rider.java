@@ -1,7 +1,5 @@
 package br.com.bikonect.entities;
 
-import org.springframework.data.annotation.Id;
-
 import java.util.Date;
 import java.util.List;
 
@@ -10,7 +8,7 @@ import java.util.List;
  */
 public class Rider {
 
-    @Id
+
     private String id;
     private String name;
     private String publicName;
