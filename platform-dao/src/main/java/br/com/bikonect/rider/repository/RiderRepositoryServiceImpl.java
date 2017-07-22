@@ -22,11 +22,12 @@ public class RiderRepositoryServiceImpl implements RiderRepositoryService {
 
     @Override
     public List<Rider> findAll() {
-        return riderRepository.findAll();
+
+        return (List<Rider>) riderRepository.findAll();
     }
 
     @Override
-    public void save(Rider rider) {
-        riderRepository.save(rider);
+    public Rider save(Rider rider) {
+        return riderRepository.save(rider);
     }
 }

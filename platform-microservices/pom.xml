@@ -20,6 +20,11 @@
             <artifactId>platform-dao</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>br.com.bikonect</groupId>
+            <artifactId>platform-general-services</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
     <!-- Package as an executable jar -->
     <build>

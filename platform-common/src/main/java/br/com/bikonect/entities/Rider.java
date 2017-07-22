@@ -1,5 +1,7 @@
 package br.com.bikonect.entities;
 
+import javax.annotation.Generated;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
@@ -9,21 +11,39 @@ import java.util.List;
 public class Rider {
 
 
-    private String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @Column(name="name")
     private String name;
+
+    @Column(name="public_name")
     private String publicName;
-    private DocumentType documentTypeId;
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "document_type")
+    private DocumentType documentType;
+
+    @Column(name="document_number")
     private String documentNumber;
+
+    @Column(name="is_active")
     private Boolean isActive;
+
+    @Column(name="created_at")
     private Date createdAt;
+
+    @Column(name="updated_at")
     private Date updatedAt;
+
+    @OneToMany(cascade=CascadeType.ALL, mappedBy="rider", fetch=FetchType.LAZY)
     private List<Bike> bikes;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -51,12 +71,12 @@ public class Rider {
         this.bikes = bikes;
     }
 
-    public DocumentType getDocumentTypeId() {
-        return documentTypeId;
+    public DocumentType getDocumentType() {
+        return documentType;
     }
 
-    public void setDocumentTypeId(DocumentType documentTypeId) {
-        this.documentTypeId = documentTypeId;
+    public void setDocumentType(DocumentType documentType) {
+        this.documentType = documentType;
     }
 
     public String getDocumentNumber() {

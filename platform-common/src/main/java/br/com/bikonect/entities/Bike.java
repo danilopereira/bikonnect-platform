@@ -1,21 +1,18 @@
 package br.com.bikonect.entities;
 
-import org.springframework.data.annotation.Id;
-
 /**
  * Created by danilopereira on 19/07/17.
  */
 public class Bike {
 
-    @Id
-    private String id;
+    private Long id;
     private String name;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

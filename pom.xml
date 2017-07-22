@@ -11,8 +11,9 @@
     <modules>
         <module>platform-common</module>
         <module>platform-dao</module>
-        <module>platform-services</module>
         <module>platform-database</module>
+        <module>platform-microservices</module>
+        <module>platform-general-services</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

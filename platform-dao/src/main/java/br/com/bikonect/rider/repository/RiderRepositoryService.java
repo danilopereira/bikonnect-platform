@@ -9,9 +9,9 @@ import java.util.List;
  */
 public interface RiderRepositoryService {
 
-    public Rider findById(String id);
+    public Rider findById(Long id);
 
     public List<Rider> findAll();
 
-    public void save(Rider rider);
+    public Rider save(Rider rider);
 }

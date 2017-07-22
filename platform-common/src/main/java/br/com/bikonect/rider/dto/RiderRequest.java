@@ -1,9 +1,13 @@
 package br.com.bikonect.rider.dto;
 
+import com.sun.istack.internal.NotNull;
+
 /**
  * Created by danilopereira on 20/07/17.
  */
 public class RiderRequest {
+    private Long id;
+    @NotNull
     private String name;
     private String documentType;
     private String documentNumber;

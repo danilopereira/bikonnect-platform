@@ -8,17 +8,35 @@ import java.util.List;
  * Created by danilopereira on 20/07/17.
  */
 public class RiderResponse {
-    private String fullName;
+    private Long id;
+    private String name;
+    private String publicName;
     private String documentType;
     private String documentNumber;
     private List<BikeResponse> bikes;
 
-    public String getFullName() {
-        return fullName;
+    public Long getId() {
+        return id;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPublicName() {
+        return publicName;
+    }
+
+    public void setPublicName(String publicName) {
+        this.publicName = publicName;
     }
 
     public String getDocumentType() {
