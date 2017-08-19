@@ -1,14 +1,19 @@
 package br.com.bikonect.entities;
 
-import org.springframework.data.annotation.Id;
+
+import javax.persistence.*;
 
 /**
  * Created by danilopereira on 20/07/17.
  */
+@Entity
+@Table(name = "document_type")
 public class DocumentType {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(name = "name")
     private String name;
 
     public Long getId() {

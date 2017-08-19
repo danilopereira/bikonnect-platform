@@ -1,6 +1,5 @@
 package br.com.bikonect.entities;
 
-import javax.annotation.Generated;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -8,6 +7,8 @@ import java.util.List;
 /**
  * Created by danilopereira on 19/07/17.
  */
+@Entity
+@Table(name = "rider")
 public class Rider {
 
 
@@ -31,9 +32,11 @@ public class Rider {
     private Boolean isActive;
 
     @Column(name="created_at")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
 
     @Column(name="updated_at")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
 
     @OneToMany(cascade=CascadeType.ALL, mappedBy="rider", fetch=FetchType.LAZY)

@@ -12,6 +12,10 @@ import java.util.List;
 public class RiderBusinessImpl implements RiderBusiness {
     private RiderService riderService;
 
+    public RiderBusinessImpl(RiderService riderService) {
+        this.riderService = riderService;
+    }
+
     @Override
     public RiderResponse save(RiderRequest request) {
         return riderService.save(request);

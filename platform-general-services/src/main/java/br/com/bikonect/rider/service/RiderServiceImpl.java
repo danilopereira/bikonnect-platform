@@ -1,10 +1,10 @@
 package br.com.bikonect.rider.service;
 
-import br.com.bikonect.documentType.repository.DocumentTypeRepositoryService;
+import br.com.bikonect.dao.documentType.repository.DocumentTypeRepositoryService;
 import br.com.bikonect.entities.Rider;
 import br.com.bikonect.rider.dto.RiderRequest;
 import br.com.bikonect.rider.dto.RiderResponse;
-import br.com.bikonect.rider.repository.RiderRepositoryService;
+import br.com.bikonect.dao.rider.repository.RiderRepositoryService;
 
 import java.util.ArrayList;
 import java.util.Date;
