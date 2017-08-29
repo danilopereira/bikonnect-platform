@@ -1,6 +1,7 @@
 package br.com.bikonect.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -9,8 +10,9 @@ import java.util.List;
  */
 @Entity
 @Table(name = "rider")
-public class Rider {
+public class Rider implements Serializable{
 
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,14 +24,18 @@ public class Rider {
     @Column(name="public_name")
     private String publicName;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "document_type")
-    private DocumentType documentType;
+    @Column(name = "document_type")
+    private String documentType;
 
     @Column(name="document_number")
     private String documentNumber;
 
     @Column(name="is_active")
     private Boolean isActive;
+
+    @OneToMany(mappedBy = "rider", targetEntity = Locker.class, cascade = {CascadeType.ALL}, orphanRemoval = true)
+    private List<Locker> lockers;
+
 
     @Column(name="created_at")
     @Temporal(TemporalType.TIMESTAMP)
@@ -38,9 +44,6 @@ public class Rider {
     @Column(name="updated_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
-
-    @OneToMany(cascade=CascadeType.ALL, mappedBy="rider", fetch=FetchType.LAZY)
-    private List<Bike> bikes;
 
     public Long getId() {
         return id;
@@ -64,22 +67,6 @@ public class Rider {
 
     public void setPublicName(String publicName) {
         this.publicName = publicName;
-    }
-
-    public List<Bike> getBikes() {
-        return bikes;
-    }
-
-    public void setBikes(List<Bike> bikes) {
-        this.bikes = bikes;
-    }
-
-    public DocumentType getDocumentType() {
-        return documentType;
-    }
-
-    public void setDocumentType(DocumentType documentType) {
-        this.documentType = documentType;
     }
 
     public String getDocumentNumber() {
@@ -112,5 +99,21 @@ public class Rider {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public List<Locker> getLockers() {
+        return lockers;
+    }
+
+    public void setLockers(List<Locker> lockers) {
+        this.lockers = lockers;
+    }
+
+    public String getDocumentType() {
+        return documentType;
+    }
+
+    public void setDocumentType(String documentType) {
+        this.documentType = documentType;
     }
 }

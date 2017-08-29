@@ -20,12 +20,15 @@
         <module>platform-common</module>
         <module>platform-dao</module>
         <module>platform-database</module>
-        <module>platform-microservices</module>
-        <module>platform-general-services</module>
+        <module>platform-rider-microservices</module>
+        <module>platform-rider-services</module>
+        <module>platform-mqtt-subscriber</module>
+        <module>platform-locker-microservices</module>
+        <module>platform-locker-services</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.4.RELEASE</version>
+        <version>1.5.6.RELEASE</version>
     </parent>
 </project>

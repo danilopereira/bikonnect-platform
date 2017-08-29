@@ -1,13 +1,14 @@
 package br.com.bikonect.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by danilopereira on 19/07/17.
  */
 @Entity
 @Table(name = "bike")
-public class Bike {
+public class Bike implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

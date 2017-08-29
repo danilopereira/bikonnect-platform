@@ -2,13 +2,14 @@ package br.com.bikonect.entities;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by danilopereira on 20/07/17.
  */
 @Entity
 @Table(name = "document_type")
-public class DocumentType {
+public class DocumentType implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
