@@ -24,7 +24,7 @@ public class Rider implements Serializable{
     @Column(name="public_name")
     private String publicName;
 
-    @Column(name = "document_type")
+    @Column(name = "document_type_id")
     private String documentType;
 
     @Column(name="document_number")

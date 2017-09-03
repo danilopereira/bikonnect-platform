@@ -1,6 +1,8 @@
 package br.com.bikonect.command;
 
+import br.com.bikonect.dao.locker.repository.LockerRepositoryService;
 import br.com.bikonect.subscriber.MqttSubscriber;
+import br.com.bikonect.subscriber.SimpleMqttCallBack;
 import br.com.bikonect.task.MQTTTask;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.slf4j.Logger;
@@ -16,29 +18,33 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class MQTTCommand implements CommandLineRunner {
-    @Autowired
-    private MqttSubscriber subscriber;
-
     @Value("${mqtt.topic}")
-    private String topic;
+    protected String topic;
+
+    @Value("${mqtt.broker.url}")
+    protected String mqttBrokerUrl;
 
     @Autowired
     protected ThreadPoolTaskExecutor taskExecutor;
 
-    private static final Logger log = LoggerFactory.getLogger(MQTTCommand.class);
+    @Autowired
+    protected LockerRepositoryService lockerRepositoryService;
+
+    @Autowired
+    protected MqttSubscriber subscriber;
+
+    Logger log = LoggerFactory.getLogger(MQTTCommand.class);
 
     @Override
     public void run(String... strings) throws Exception {
-        log.info("Application Started here!");
-        System.out.println("PASSEI AQUI!!");
+        String message = subscriber.consume();
         while(true){
-            MqttClient client = subscriber.consume();
-            if(client == null){
+            if(null == message){
                 Thread.sleep(2000);
                 continue;
             }
             else{
-                MQTTTask task = new MQTTTask(client, topic);
+                MQTTTask task = new MQTTTask(message, lockerRepositoryService);
                 taskExecutor.execute(task);
             }
         }

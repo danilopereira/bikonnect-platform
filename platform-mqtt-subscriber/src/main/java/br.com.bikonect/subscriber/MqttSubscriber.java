@@ -1,6 +1,5 @@
 package br.com.bikonect.subscriber;
 
-import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttException;
 
 /**
@@ -8,5 +7,5 @@ import org.eclipse.paho.client.mqttv3.MqttException;
  */
 public interface MqttSubscriber {
 
-    MqttClient consume() throws MqttException, Exception;
+    String consume() throws MqttException, Exception;
 }
