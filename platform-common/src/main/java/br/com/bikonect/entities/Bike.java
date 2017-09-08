@@ -1,21 +1,27 @@
 package br.com.bikonect.entities;
 
-import org.springframework.data.annotation.Id;
+import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by danilopereira on 19/07/17.
  */
-public class Bike {
+@Entity
+@Table(name = "bike")
+public class Bike implements Serializable{
 
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @Column(name = "name")
     private String name;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
