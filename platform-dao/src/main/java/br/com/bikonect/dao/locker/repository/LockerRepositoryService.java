@@ -9,5 +9,5 @@ public interface LockerRepositoryService {
 
     void save(Locker locker);
 
-    Locker findById(String lockerId);
+    Locker findById(Long lockerId);
 }

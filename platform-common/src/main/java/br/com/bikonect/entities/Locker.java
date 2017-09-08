@@ -2,6 +2,7 @@ package br.com.bikonect.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -16,10 +17,14 @@ public class Locker implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @Column(name = "public_id")
+    private String publicId;
 
     @OneToMany(mappedBy = "locker", targetEntity = LockerPosition.class, cascade = {CascadeType.ALL}, orphanRemoval = true)
-    private List<LockerPosition> lockerPositions;
+    private List<LockerPosition> lockerPositions = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Rider.class)
     @JoinColumn(name = "rider_id")
@@ -33,11 +38,11 @@ public class Locker implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -63,5 +68,21 @@ public class Locker implements Serializable {
 
     public void setLockerPositions(List<LockerPosition> lockerPositions) {
         this.lockerPositions = lockerPositions;
+    }
+
+    public String getPublicId() {
+        return publicId;
+    }
+
+    public void setPublicId(String publicId) {
+        this.publicId = publicId;
+    }
+
+    public Rider getRider() {
+        return rider;
+    }
+
+    public void setRider(Rider rider) {
+        this.rider = rider;
     }
 }

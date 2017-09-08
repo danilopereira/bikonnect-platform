@@ -19,7 +19,7 @@ public class LockerRepositoryServiceImpl implements LockerRepositoryService {
     }
 
     @Override
-    public Locker findById(String lockerId) {
+    public Locker findById(Long lockerId) {
         return lockerRepository.findOne(lockerId);
     }
 }
