@@ -1,7 +1,7 @@
-"lockerDTO":{
-	"id": "ABC123",
+{
+	"id": 1,
 	"position":{
-		"latitude": -123456,
-		"longitude": 1234567
+		"latitude": -23.573978,
+		"longitude": -46.6254607
 	}
 }

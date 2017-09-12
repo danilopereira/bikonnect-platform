@@ -20,12 +20,11 @@ public class MqttSubscriberImpl implements MqttSubscriber {
 
 
     @Override
-    public String consume() throws Exception {
+    public void consume() throws Exception {
         MqttClient client=new MqttClient(mqttBrokerUrl, MqttClient.generateClientId());
         SimpleMqttCallBack simpleMqttCallBack = new SimpleMqttCallBack(lockerRepositoryService);
         client.setCallback(simpleMqttCallBack );
         client.connect();
         client.subscribe(topic);
-        return simpleMqttCallBack.getMessage();
     }
 }

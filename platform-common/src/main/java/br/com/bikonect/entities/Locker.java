@@ -2,9 +2,7 @@ package br.com.bikonect.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by danilopereira on 26/08/17.
@@ -23,8 +21,8 @@ public class Locker implements Serializable {
     @Column(name = "public_id")
     private String publicId;
 
-    @OneToMany(mappedBy = "locker", targetEntity = LockerPosition.class, cascade = {CascadeType.ALL}, orphanRemoval = true)
-    private List<LockerPosition> lockerPositions = new ArrayList<>();
+    @OneToMany(mappedBy = "locker", targetEntity = LockerPosition.class, cascade = {CascadeType.ALL}, orphanRemoval = true, fetch = FetchType.EAGER)
+    private Set<LockerPosition> lockerPositions = new HashSet<>();
 
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Rider.class)
     @JoinColumn(name = "rider_id")
@@ -62,11 +60,11 @@ public class Locker implements Serializable {
         this.updatedAt = updatedAt;
     }
 
-    public List<LockerPosition> getLockerPositions() {
+    public Set<LockerPosition> getLockerPositions() {
         return lockerPositions;
     }
 
-    public void setLockerPositions(List<LockerPosition> lockerPositions) {
+    public void setLockerPositions(Set<LockerPosition> lockerPositions) {
         this.lockerPositions = lockerPositions;
     }
 
