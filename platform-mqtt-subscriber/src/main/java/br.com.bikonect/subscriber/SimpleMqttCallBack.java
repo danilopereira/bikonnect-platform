@@ -11,10 +11,7 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by danilopereira on 19/08/17.
@@ -57,6 +54,7 @@ public class SimpleMqttCallBack implements MqttCallback {
         lockerPosition.setLatitude(lockerDTO.getPosition().getLatitude());
         lockerPosition.setLongitude(lockerDTO.getPosition().getLongitude());
         lockerPosition.setLocker(locker);
+        lockerPosition.setCreatedAt(new Date(System.currentTimeMillis()));
 
         lockerPositions.add(lockerPosition);
 

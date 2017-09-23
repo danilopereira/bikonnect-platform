@@ -1,7 +1,7 @@
 package br.com.bikonect.config;
 
-import br.com.bikonect.br.com.bikonect.rider.business.RiderBusiness;
-import br.com.bikonect.br.com.bikonect.rider.business.RiderBusinessImpl;
+import br.com.bikonect.rider.business.RiderBusiness;
+import br.com.bikonect.rider.business.RiderBusinessImpl;
 import br.com.bikonect.dao.documentType.repository.DocumentTypeRepositoryService;
 import br.com.bikonect.dao.rider.repository.RiderRepositoryService;
 import br.com.bikonect.rider.service.RiderService;

@@ -1,7 +1,9 @@
 package br.com.bikonect.rider.service;
 
 import br.com.bikonect.dao.documentType.repository.DocumentTypeRepositoryService;
+import br.com.bikonect.entities.Locker;
 import br.com.bikonect.entities.Rider;
+import br.com.bikonect.locker.dto.LockerResponse;
 import br.com.bikonect.rider.dto.RiderRequest;
 import br.com.bikonect.rider.dto.RiderResponse;
 import br.com.bikonect.dao.rider.repository.RiderRepositoryService;
@@ -34,20 +36,30 @@ public class RiderServiceImpl implements RiderService {
         rider.setDocumentNumber(request.getDocumentNumber());
         rider.setCreatedAt(new Date(System.currentTimeMillis()));
         rider.setUpdatedAt(new Date(System.currentTimeMillis()));
-        rider.setDocumentType(documentTypeRepositoryService.findByName(request.getDocumentType()));
+        rider.setDocumentType(documentTypeRepositoryService.findByName(request.getDocumentType()).getName());
 
         rider = riderRepositoryService.save(rider);
 
-        return generatResponse(rider);
+        return generateResponse(rider);
     }
 
-    private RiderResponse generatResponse(Rider rider) {
+    private RiderResponse generateResponse(Rider rider) {
         RiderResponse riderResponse = new RiderResponse();
         riderResponse.setId(rider.getId());
         riderResponse.setDocumentNumber(rider.getDocumentNumber());
-        riderResponse.setDocumentType(rider.getDocumentType().getName());
+        riderResponse.setDocumentType(rider.getDocumentType());
         riderResponse.setName(rider.getName());
         riderResponse.setPublicName(rider.getPublicName());
+        List<LockerResponse> lockerResponses = new ArrayList<>();
+        List<Locker> lockers = rider.getLockers();
+        lockers.forEach(locker -> {
+            LockerResponse lockerResponse = new LockerResponse();
+            lockerResponse.setId(locker.getId());
+            lockerResponse.setPublicId(locker.getPublicId());
+
+            lockerResponses.add(lockerResponse);
+        });
+        riderResponse.setLockerResponses(lockerResponses);
 
         return riderResponse;
     }
@@ -58,7 +70,7 @@ public class RiderServiceImpl implements RiderService {
 
     @Override
     public RiderResponse findById(Long id) {
-        return generatResponse(riderRepositoryService.findById(id));
+        return generateResponse(riderRepositoryService.findById(id));
     }
 
     @Override
@@ -75,7 +87,7 @@ public class RiderServiceImpl implements RiderService {
         List<Rider> riders = riderRepositoryService.findAll();
         List<RiderResponse> ridersResponse = new ArrayList<RiderResponse>();
         for(Rider rider : riders){
-            RiderResponse riderResponse = generatResponse(rider);
+            RiderResponse riderResponse = generateResponse(rider);
             ridersResponse.add(riderResponse);
         }
         return ridersResponse;

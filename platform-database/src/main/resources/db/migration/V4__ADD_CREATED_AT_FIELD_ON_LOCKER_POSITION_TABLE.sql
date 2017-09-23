@@ -1,0 +1,1 @@
+ALTER TABLE locker_position ADD COLUMN (created_at DATETIME);
