@@ -12,15 +12,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by danilopereira on 19/08/17.
  */
 public class SimpleMqttCallBack implements MqttCallback {
     private LockerRepositoryService lockerRepositoryService;
-
-    private String message;
 
     public SimpleMqttCallBack(LockerRepositoryService lockerRepositoryService){
         this.lockerRepositoryService = lockerRepositoryService;
@@ -34,8 +34,6 @@ public class SimpleMqttCallBack implements MqttCallback {
         System.out.println("Message received:\n\t"+new String(mqttMessage.getPayload()));
 
         String message = new String(mqttMessage.getPayload());
-
-        this.message = message;
 
         try {
             Locker locker = convertLockerDTOToLockerEntity(convertMessage(message));
@@ -52,8 +50,8 @@ public class SimpleMqttCallBack implements MqttCallback {
         return locker;
     }
 
-    private List<LockerPosition> parseMapToLockerPositions(LockerDTO lockerDTO, Locker locker) {
-        List<LockerPosition> lockerPositions = new ArrayList<>();
+    private Set<LockerPosition> parseMapToLockerPositions(LockerDTO lockerDTO, Locker locker) {
+        Set<LockerPosition> lockerPositions = locker.getLockerPositions();
 
         LockerPosition lockerPosition = new LockerPosition();
         lockerPosition.setLatitude(lockerDTO.getPosition().getLatitude());
@@ -72,13 +70,5 @@ public class SimpleMqttCallBack implements MqttCallback {
 
     public void deliveryComplete(IMqttDeliveryToken iMqttDeliveryToken) {
 
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
     }
 }

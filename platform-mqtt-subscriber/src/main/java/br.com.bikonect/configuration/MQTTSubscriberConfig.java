@@ -31,6 +31,12 @@ public class MQTTSubscriberConfig {
     @Value("${mqtt.topic}")
     private String mqttTopic;
 
+    @Value("${mqtt.user}")
+    private String user;
+
+    @Value("${mqtt.password}")
+    private String password;
+
     @Value("${worker.thread.poll.core.size}")
     private Integer workerThreadPoolCoreSize;
 
@@ -44,7 +50,7 @@ public class MQTTSubscriberConfig {
 
     @Bean
     public MqttSubscriber subscriber(LockerRepositoryService lockerRepositoryService){
-        return new MqttSubscriberImpl(mqttBrokerUrl, mqttTopic, lockerRepositoryService);
+        return new MqttSubscriberImpl(mqttBrokerUrl, mqttTopic, lockerRepositoryService, user, password);
     }
 
     @Bean
