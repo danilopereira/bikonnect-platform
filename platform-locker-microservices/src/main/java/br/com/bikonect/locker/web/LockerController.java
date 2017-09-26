@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * Created by danilopereira on 23/09/17.
  */
-@RestController("/api/v1/locker")
+@RestController
 public class LockerController {
 
     @Autowired
     private LockerBusiness lockerBusiness;
 
-    @GetMapping("/{id}")
+    @GetMapping("/api/v1/locker/{id}")
     public LockerLockerPositionsResponse getLocker(@PathVariable("id") Long lockerId){
         return lockerBusiness.getPositionsById(lockerId);
     }

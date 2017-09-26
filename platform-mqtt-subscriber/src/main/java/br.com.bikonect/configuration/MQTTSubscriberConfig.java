@@ -3,6 +3,7 @@ package br.com.bikonect.configuration;
 import br.com.bikonect.dao.locker.repository.LockerRepository;
 import br.com.bikonect.dao.locker.repository.LockerRepositoryService;
 import br.com.bikonect.dao.locker.repository.LockerRepositoryServiceImpl;
+import br.com.bikonect.handler.MqttHandler;
 import br.com.bikonect.subscriber.MqttSubscriber;
 import br.com.bikonect.subscriber.MqttSubscriberImpl;
 import org.springframework.beans.factory.annotation.Value;
@@ -60,6 +61,11 @@ public class MQTTSubscriberConfig {
         pool.setMaxPoolSize(workerThreadPoolMaxSize);
         pool.setWaitForTasksToCompleteOnShutdown(true);
         return pool;
+    }
+
+    @Bean
+    public MqttHandler mqttHandler(){
+        return new MqttHandler();
     }
 
 
