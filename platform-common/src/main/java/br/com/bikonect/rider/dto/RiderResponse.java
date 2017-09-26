@@ -1,6 +1,7 @@
 package br.com.bikonect.rider.dto;
 
 import br.com.bikonect.bike.dto.BikeResponse;
+import br.com.bikonect.locker.dto.LockerResponse;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ public class RiderResponse {
     private String publicName;
     private String documentType;
     private String documentNumber;
-    private List<BikeResponse> bikes;
+    private List<LockerResponse> lockerResponses;
 
     public Long getId() {
         return id;
@@ -55,11 +56,11 @@ public class RiderResponse {
         this.documentNumber = documentNumber;
     }
 
-    public List<BikeResponse> getBikes() {
-        return bikes;
+    public List<LockerResponse> getLockerResponses() {
+        return lockerResponses;
     }
 
-    public void setBikes(List<BikeResponse> bikes) {
-        this.bikes = bikes;
+    public void setLockerResponses(List<LockerResponse> lockerResponses) {
+        this.lockerResponses = lockerResponses;
     }
 }

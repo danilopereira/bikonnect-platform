@@ -24,7 +24,6 @@
         <module>platform-rider-services</module>
         <module>platform-mqtt-subscriber</module>
         <module>platform-locker-microservices</module>
-        <module>platform-locker-services</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

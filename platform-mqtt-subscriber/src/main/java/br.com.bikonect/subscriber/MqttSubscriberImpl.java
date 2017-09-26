@@ -1,6 +1,7 @@
 package br.com.bikonect.subscriber;
 
 import br.com.bikonect.dao.locker.repository.LockerRepositoryService;
+import br.com.bikonect.handler.MqttHandler;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 
@@ -27,12 +28,12 @@ public class MqttSubscriberImpl implements MqttSubscriber {
 
 
     @Override
-    public void consume() throws Exception {
+    public void consume(MqttHandler mqttHandler) throws Exception {
         MqttClient client=new MqttClient(mqttBrokerUrl, MqttClient.generateClientId());
         MqttConnectOptions connectOptions = new MqttConnectOptions();
         connectOptions.setUserName(user);
         connectOptions.setPassword(password.toCharArray());
-        SimpleMqttCallBack simpleMqttCallBack = new SimpleMqttCallBack(lockerRepositoryService);
+        SimpleMqttCallBack simpleMqttCallBack = new SimpleMqttCallBack(mqttHandler);
         client.setCallback(simpleMqttCallBack );
         client.connect(connectOptions);
         client.subscribe(topic);

@@ -1,6 +1,7 @@
 package br.com.bikonect.entities;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by danilopereira on 26/08/17.
@@ -24,6 +25,10 @@ public class LockerPosition{
 
     @Column(name = "longitude")
     private Float longitude;
+
+    @Column(name="created_at")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdAt;
 
     public Long getId() {
         return id;
@@ -55,5 +60,13 @@ public class LockerPosition{
 
     public void setLongitude(Float longitude) {
         this.longitude = longitude;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 }
