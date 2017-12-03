@@ -1,6 +1,5 @@
 package br.com.bikonect.locker.dto;
 
-import br.com.bikonect.entities.LockerPosition;
 import br.com.bikonect.lockerposition.dto.LockerPositionResponse;
 
 import java.util.List;
