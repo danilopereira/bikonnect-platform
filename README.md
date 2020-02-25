@@ -4,7 +4,7 @@
  this project is configure and handle any heavy process and data send by each bike locker connected to the platform.
  
 ## Stack
-This project have been built with:
+This project has been built with:
 - Java 8
 - Spring Boot
 - MySQL
