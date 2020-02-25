@@ -1,7 +1,7 @@
 # BIKONNECT PLATFORM
 
  This is the backend side for the bike locker developed to the Bikonnect project. The main responsibility of
- this project is configure and handle any heavy process and data send by each bike locker connected.
+ this project is configure and handle any heavy process and data send by each bike locker connected to the platform.
  
 ## Stack
 This project have been built with:
