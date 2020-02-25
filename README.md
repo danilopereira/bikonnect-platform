@@ -20,7 +20,7 @@ This project is divided is composite by different maven modules, each one with y
 - platform-rider-services
 - platform-mqtt-subscriber
 
-Let's go deep into each one.
+Let's go deep into each one:
 
 ### platform-common
 This module is basically a library, responsible to gather everything related with persistence and the DTOs
@@ -35,11 +35,11 @@ An implementation of the Flyway Migration Framework, this module manage the tabl
 This module put all the controllers and the business logic (as validations and some managements) regarding the *locker*.
 Currently is just implemented a GET endpoint to request the last positions of a locker.
 
-## platform-rider-microservices
+### platform-rider-microservices
 This is another module of controllers, but this one gather all the *rider* endpoints (basically a CRUD).
 
-## platform-rider-services
-This one is a library used by the ***platform-rider-microservices*** module. It consumes the needed repositories from the *platform-dao* module and manipulate the responses.
+### platform-rider-services
+This one is a library used by the **platform-rider-microservices** module. It consumes the needed repositories from the **platform-dao** module and manipulate the responses.
 
-## platform-mqtt-subscriber
+### platform-mqtt-subscriber
 This part of the project is a command line runner that consumes the mqtt broker configured getting the geo-positions from the locker and persisting them on the database.
