@@ -43,3 +43,27 @@ This one is a library used by the **platform-rider-microservices** module. It co
 
 ### platform-mqtt-subscriber
 This part of the project is a command line runner that consumes the mqtt broker configured getting the geo-positions from the locker and persisting them on the database.
+
+## Let's run
+
+To run this project is simple: You can use the following *make* commands:
+
+to execute the database migrations:
+```shell script
+make run-db
+```
+
+to start the MQTT subscriber:
+```shell script
+make run-mqtt
+```
+
+to execute the rider's API:
+```shell script
+make run-rider
+```
+
+to turn on the locker's API:
+```shell script
+make run-locker
+```
